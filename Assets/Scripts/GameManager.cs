@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     public float meterDropAfterSurvivingDino = 0.5f;
     public float meterPenaltyAfterDinoDeath = 0.05f;
 
+    public Color meterSafeColor = new Color(0.373f, 0.851f, 0.478f);    // #5FD97A
+    public Color meterWarningColor = new Color(1f, 0.788f, 0.235f);     // #FFC93C
+    public Color meterDangerColor = new Color(1f, 0.353f, 0.322f);      // #FF5A52
+
     [Header("Difficulty Scaling")]
     public float difficultyRampInterval = 20f;
     public float timeLimitMultiplier = 1f;
@@ -155,6 +159,16 @@ public class GameManager : MonoBehaviour
     private void UpdateMeterUI()
     {
         offlineMeterBar.fillAmount = offlineMeter;
+
+        if (offlineMeter < 0.6f)
+        {
+            offlineMeterBar.color = Color.Lerp(meterSafeColor, meterWarningColor, offlineMeter / 0.6f);
+        }
+        else
+        {
+            offlineMeterBar.color = Color.Lerp(meterWarningColor, meterDangerColor, (offlineMeter - 0.6f) / 0.4f);
+        }
+
         offlineMeterText.text = $"Offline Meter: {Mathf.RoundToInt(offlineMeter * 100)}%";
 
         if (playerAvatar != null)
