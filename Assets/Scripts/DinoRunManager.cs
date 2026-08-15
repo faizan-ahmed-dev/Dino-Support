@@ -20,6 +20,7 @@ public class DinoRunManager : MonoBehaviour
     private float timeSurvived;
     private bool runActive = false;
     private bool pendingResult;
+    private float pendingTimeSurvived;
 
     void Awake()
     {
@@ -66,12 +67,13 @@ public class DinoRunManager : MonoBehaviour
             ? "Connection restored. Back to work."
             : "You got got. Back to the grind.";
 
-        Invoke(nameof(ReturnToCity), 1.5f);
         pendingResult = survived;
+        pendingTimeSurvived = timeSurvived;
+        Invoke(nameof(ReturnToCity), 1.5f);
     }
 
     private void ReturnToCity()
     {
-        GameManager.Instance.ExitDinoMode(pendingResult);
+        GameManager.Instance.ExitDinoMode(pendingResult, pendingTimeSurvived, surviveDuration);
     }
 }

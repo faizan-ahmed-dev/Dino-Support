@@ -32,7 +32,8 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnObstacle()
     {
         var prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-        var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(spawnPoint.position.x, prefab.transform.position.y, 0f);
+        var obj = Instantiate(prefab, spawnPos, Quaternion.identity);
         var obstacle = obj.GetComponent<Obstacle>();
         obstacle.speed = baseSpeed + (elapsed * speedIncreasePerSecond);
     }

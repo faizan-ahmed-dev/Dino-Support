@@ -11,6 +11,7 @@ public class HouseSlot : MonoBehaviour
     public TMP_Text problemText;
     public Button[] fixButtons;
     public TMP_Text[] fixButtonLabels;
+    public Button selfButton; // drag this ticket's OWN Button component in here
 
     private HouseProblem currentProblem;
     private float timeRemaining;
@@ -48,7 +49,16 @@ public class HouseSlot : MonoBehaviour
         }
     }
 
+    // Now requests a travel delay instead of opening the popup immediately -
+    // this is what makes clicking a house a real decision instead of a free action.
     public void OnHouseClicked()
+    {
+        if (!isActive || isSolved) return;
+        GameManager.Instance.RequestTravel(this);
+    }
+
+    // Called by GameManager once the travel delay finishes
+    public void ShowPopupNow()
     {
         if (!isActive || isSolved) return;
 
@@ -78,6 +88,11 @@ public class HouseSlot : MonoBehaviour
 
         bool wasCorrect = (choiceIndex == currentProblem.correctFixIndex);
         GameManager.Instance.OnHouseResolved(this, wasCorrect);
+    }
+
+    public void SetInteractable(bool value)
+    {
+        if (selfButton != null) selfButton.interactable = value;
     }
 
     public void ClearSlot()
