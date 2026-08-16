@@ -108,13 +108,34 @@ public class GameManager : MonoBehaviour
     public void StartShift()
     {
         introPanel.SetActive(false);
-        AudioManager.Instance.PlayCityMusic();
         shiftStarted = true;
+        shiftTimeRemaining = shiftDuration;
 
         foreach (var slot in houseSlots)
         {
             AssignNewProblem(slot);
         }
+    }
+
+    public void StartShift_Easy()
+    {
+        travelDuration = 0.5f;
+        shiftDuration = 60f;
+        StartShift();
+    }
+
+    public void StartShift_Medium()
+    {
+        travelDuration = 1.0f;
+        shiftDuration = 90f;
+        StartShift();
+    }
+
+    public void StartShift_Hard()
+    {
+        travelDuration = 1.5f;
+        shiftDuration = 120f;
+        StartShift();
     }
 
     void Update()
