@@ -8,6 +8,7 @@ public class DinoController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.15f;
     public LayerMask groundLayer;
+    public AudioClip jumpSound;
 
     [Header("Duck Sprite (optional - assign once you have real dino art)")]
     public SpriteRenderer dinoRenderer;
@@ -49,6 +50,7 @@ public class DinoController : MonoBehaviour
         if (jumpPressed && isGrounded && !isDucking)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            AudioManager.Instance.PlaySFX(jumpSound);
         }
 
         bool duckHeld = Input.GetKey(KeyCode.DownArrow);

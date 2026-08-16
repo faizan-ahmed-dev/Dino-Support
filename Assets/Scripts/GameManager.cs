@@ -7,6 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Audio Clips")]
+    public AudioClip ticketClickSound;
+    public AudioClip enterDinoTransitionSound;
+    public AudioClip returnToCitySound;
+    public AudioClip strikeGainedSound;
+    public AudioClip meterDangerSound;
+    public AudioClip gameOverSound;
+    public AudioClip winSound;
+
+    private bool dangerSoundPlayed = false;
+
     [Header("Setup")]
     public HouseSlot[] houseSlots;
     public float shiftDuration = 90f;
@@ -97,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void StartShift()
     {
         introPanel.SetActive(false);
+        AudioManager.Instance.PlayCityMusic();
         shiftStarted = true;
 
         foreach (var slot in houseSlots)
@@ -138,6 +150,7 @@ public class GameManager : MonoBehaviour
     public void RequestTravel(HouseSlot slot)
     {
         if (isTraveling || gameOver || inDinoMode || !shiftStarted) return;
+        AudioManager.Instance.PlaySFX(ticketClickSound);
         StartCoroutine(TravelRoutine(slot));
     }
 
@@ -216,6 +229,16 @@ public class GameManager : MonoBehaviour
         offlineMeterText.text = $"Offline Meter: {Mathf.RoundToInt(offlineMeter * 100)}%";
 
         if (playerAvatar != null) playerAvatar.UpdateAvatar(offlineMeter);
+
+        if (offlineMeter >= 0.6f && !dangerSoundPlayed)
+        {
+            AudioManager.Instance.PlaySFX(meterDangerSound);
+            dangerSoundPlayed = true;
+        }
+        else if (offlineMeter < 0.6f)
+        {
+            dangerSoundPlayed = false;
+        }
     }
 
     private void UpdateStrikesUI()
@@ -242,6 +265,8 @@ public class GameManager : MonoBehaviour
     private void EnterDinoMode()
     {
         if (inDinoMode) return;
+        AudioManager.Instance.PlaySFX(enterDinoTransitionSound);
+        AudioManager.Instance.PlayDinoMusic();
         inDinoMode = true;
         cityWorldRoot.SetActive(false);
         dinoWorldRoot.SetActive(true);
@@ -255,6 +280,8 @@ public class GameManager : MonoBehaviour
         inDinoMode = false;
         dinoWorldRoot.SetActive(false);
         cityWorldRoot.SetActive(true);
+        AudioManager.Instance.PlaySFX(returnToCitySound);
+        AudioManager.Instance.PlayCityMusic();
 
         if (survived)
         {
@@ -264,6 +291,8 @@ public class GameManager : MonoBehaviour
         }
 
         strikes++;
+        AudioManager.Instance.PlaySFX(strikeGainedSound);
+
         UpdateStrikesUI();
 
         if (strikes >= maxStrikes)
@@ -281,6 +310,7 @@ public class GameManager : MonoBehaviour
     private void LoseGame()
     {
         gameOver = true;
+        AudioManager.Instance.PlaySFX(gameOverSound);
         losePanel.SetActive(true);
 
         if (loseSummaryText != null)
@@ -307,6 +337,7 @@ public class GameManager : MonoBehaviour
     private void WinShift()
     {
         gameOver = true;
+        AudioManager.Instance.PlaySFX(winSound);
         winPanel.SetActive(true);
         string grade = CalculateGrade();
         summaryText.text =

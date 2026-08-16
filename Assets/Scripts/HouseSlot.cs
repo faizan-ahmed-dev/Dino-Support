@@ -12,6 +12,8 @@ public class HouseSlot : MonoBehaviour
     public Button[] fixButtons;
     public TMP_Text[] fixButtonLabels;
     public Button selfButton; // drag this ticket's OWN Button component in here
+    public AudioClip correctFixSound;
+    public AudioClip wrongFixSound;
 
     private HouseProblem currentProblem;
     private float timeRemaining;
@@ -91,6 +93,7 @@ public class HouseSlot : MonoBehaviour
         isActive = false;
 
         bool wasCorrect = (choiceIndex == currentProblem.correctFixIndex);
+        AudioManager.Instance.PlaySFX(wasCorrect ? correctFixSound : wrongFixSound);
         GameManager.Instance.OnHouseResolved(this, wasCorrect);
     }
 

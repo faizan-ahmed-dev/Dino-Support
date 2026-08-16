@@ -1,16 +1,12 @@
 using UnityEngine;
 
-// One AudioManager lives in the scene the whole time (like GameManager).
-// Anything can call AudioManager.Instance.PlaySFX(clip) or PlayMusic(clip).
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Drag the two AudioSource components from THIS object")]
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
-    [Header("Music tracks")]
     public AudioClip cityMusic;
     public AudioClip dinoMusic;
 

@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   speed: 6
+  hitSound: {fileID: 8300000, guid: 813c1e39c397f984685513fd0ca2add7, type: 3}

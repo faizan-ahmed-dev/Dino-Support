@@ -2048,6 +2048,8 @@ MonoBehaviour:
   - {fileID: 160055225}
   - {fileID: 381672133}
   selfButton: {fileID: 227606427}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!114 &227606427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,6 +3119,8 @@ MonoBehaviour:
   - {fileID: 811020828}
   - {fileID: 69167865}
   selfButton: {fileID: 440755942}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!114 &440755942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,6 +3357,8 @@ MonoBehaviour:
   - {fileID: 1643990373}
   - {fileID: 1686141484}
   selfButton: {fileID: 487952564}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!114 &487952564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7348,6 +7354,8 @@ MonoBehaviour:
   - {fileID: 124538037}
   - {fileID: 1432438150}
   selfButton: {fileID: 988571541}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!1 &989693536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8107,6 +8115,8 @@ MonoBehaviour:
   - {fileID: 800286291}
   - {fileID: 139352164}
   selfButton: {fileID: 1123605777}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!114 &1123605777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8899,6 +8909,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f961d273ab996234ba70ce2a192954e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  ticketClickSound: {fileID: 8300000, guid: 9aa2424a8a4b9c44e9bacef3e8e862f2, type: 3}
+  enterDinoTransitionSound: {fileID: 8300000, guid: da541df2de66901459e110336d43b5db, type: 3}
+  returnToCitySound: {fileID: 8300000, guid: ddbb32ee9770f854f9fff092af864f27, type: 3}
+  strikeGainedSound: {fileID: 8300000, guid: ddadc072cce8a6c4689b3960e0ed69ae, type: 3}
+  meterDangerSound: {fileID: 8300000, guid: 5b909cfe85ea1ea419b8612df6085e4c, type: 3}
+  gameOverSound: {fileID: 8300000, guid: f98a0167d1820b740a96b1f3bdbaf6b1, type: 3}
+  winSound: {fileID: 8300000, guid: 9b57ddf5e732bbb41afb289edbb70605, type: 3}
   houseSlots:
   - {fileID: 988571544}
   - {fileID: 1123605776}
@@ -10034,6 +10051,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  jumpSound: {fileID: 8300000, guid: 6756beb79280e5548a2e10da412f4ad6, type: 3}
   dinoRenderer: {fileID: 1584738621}
   standingSprite: {fileID: 0}
   duckingSprite: {fileID: 0}
@@ -11261,6 +11279,8 @@ MonoBehaviour:
   - {fileID: 199910419}
   - {fileID: 243185084}
   selfButton: {fileID: 1705434616}
+  correctFixSound: {fileID: 8300000, guid: 9a0be80a2115d8a40bb5dfe0cd980bf4, type: 3}
+  wrongFixSound: {fileID: 8300000, guid: 265d15dae3706cd4d8f1e917bcf0b2e8, type: 3}
 --- !u!114 &1705434616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13587,10 +13607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40ebe8368109454d8944f0c1054a443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
-  cityMusic: {fileID: 0}
-  dinoMusic: {fileID: 0}
+  musicSource: {fileID: 2139009225}
+  sfxSource: {fileID: 2139009224}
+  cityMusic: {fileID: 8300000, guid: 83c5e851b2e912d4eafc3700f0a54b3f, type: 3}
+  dinoMusic: {fileID: 8300000, guid: 7778e9e1d9e74274583ce332266fd4f3, type: 3}
 --- !u!82 &2139009224
 AudioSource:
   m_ObjectHideFlags: 0
