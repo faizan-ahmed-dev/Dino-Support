@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     private int customersServed = 0;
     private int customersFailed = 0;
     private int strikes = 0;
+    public bool IsGamePaused => inDinoMode || gameOver || !shiftStarted;
 
     void Awake()
     {
@@ -151,6 +152,8 @@ public class GameManager : MonoBehaviour
         isTraveling = false;
         foreach (var s in houseSlots) s.SetInteractable(true);
         if (travelStatusText != null) travelStatusText.text = "";
+
+        if (gameOver || inDinoMode) yield break; // got pulled into the Dino World mid-travel - don't open a popup in the background
 
         slot.ShowPopupNow();
     }
@@ -238,6 +241,7 @@ public class GameManager : MonoBehaviour
 
     private void EnterDinoMode()
     {
+        if (inDinoMode) return;
         inDinoMode = true;
         cityWorldRoot.SetActive(false);
         dinoWorldRoot.SetActive(true);

@@ -9,6 +9,11 @@ public class DinoController : MonoBehaviour
     public float groundCheckRadius = 0.15f;
     public LayerMask groundLayer;
 
+    [Header("Duck Sprite (optional - assign once you have real dino art)")]
+    public SpriteRenderer dinoRenderer;
+    public Sprite standingSprite;
+    public Sprite duckingSprite;
+
     [Header("Duck (collider shrinks instantly - no animation, just a state swap)")]
     public Vector2 standingColliderSize = new Vector2(1f, 1f);
     public Vector2 standingColliderOffset = Vector2.zero;
@@ -52,12 +57,14 @@ public class DinoController : MonoBehaviour
             isDucking = true;
             col.size = duckingColliderSize;
             col.offset = duckingColliderOffset;
+            if (dinoRenderer != null && duckingSprite != null) dinoRenderer.sprite = duckingSprite;
         }
         else if ((!duckHeld || !isGrounded) && isDucking)
         {
             isDucking = false;
             col.size = standingColliderSize;
             col.offset = standingColliderOffset;
+            if (dinoRenderer != null && standingSprite != null) dinoRenderer.sprite = standingSprite;
         }
     }
 

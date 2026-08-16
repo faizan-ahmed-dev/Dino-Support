@@ -32,7 +32,11 @@ public class HouseSlot : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("IsGamePaused: " + (GameManager.Instance != null ? GameManager.Instance.IsGamePaused.ToString() : "NULL INSTANCE"));
+
         if (!isActive || isSolved) return;
+        if (GameManager.Instance != null && GameManager.Instance.IsGamePaused) return;
+
 
         timeRemaining -= Time.deltaTime;
         timerFillBar.fillAmount = timeRemaining / currentProblem.timeLimit;

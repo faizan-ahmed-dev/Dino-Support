@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -6601691336363857274, guid: 56796b6972b7a74489bfc0647c75fc7b, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6337,11 +6337,11 @@ RectTransform:
   - {fileID: 625481683}
   - {fileID: 1930706554}
   - {fileID: 1217195347}
+  - {fileID: 736491552}
   - {fileID: 41355968}
   - {fileID: 47056209}
-  - {fileID: 2040764261}
-  - {fileID: 736491552}
   - {fileID: 2023129145}
+  - {fileID: 2040764261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10034,6 +10034,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  dinoRenderer: {fileID: 1584738621}
+  standingSprite: {fileID: 0}
+  duckingSprite: {fileID: 0}
   standingColliderSize: {x: 1, y: 1}
   standingColliderOffset: {x: 0, y: 0}
   duckingColliderSize: {x: 1, y: 0.5}
