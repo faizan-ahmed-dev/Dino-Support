@@ -45,5 +45,30 @@ public static class ProblemDatabase
             0,
             16f
         ),
+
+        new HouseProblem(
+    "My cat unplugged the router. Again.",
+    new string[] { "Adopt a dog instead", "Plug it back in", "File a police report" },
+    1,
+    13f
+),
+        new HouseProblem(
+    "My neighbor is stealing our Wi-Fi.",
+    new string[] {  "Challenge them to a duel", "Unplug the internet forever", "Change the password" },
+    2,
+    14f
+),
+        new HouseProblem(
+    "The router is making a weird beeping noise.",
+    new string[] {  "Perform an exorcism", "Restart it", "Feed it a snack" },
+    1,
+    12f
+),
+        new HouseProblem(
+    "The Wi-Fi signal disappears whenever it rains.",
+    new string[] {  "Pray for sunshine", "Build an ark", "Move the router away from windows" },
+    2,
+    16f
+),
     };
 }

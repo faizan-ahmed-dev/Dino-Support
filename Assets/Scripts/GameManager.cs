@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
         introPanel.SetActive(false);
         shiftStarted = true;
         shiftTimeRemaining = shiftDuration;
+        AudioManager.Instance.PlayCityMusic();
 
         foreach (var slot in houseSlots)
         {
